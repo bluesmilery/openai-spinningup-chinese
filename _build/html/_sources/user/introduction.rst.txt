@@ -21,8 +21,8 @@
 - 关键算法的简短独立实现的详细记录`代码repo`_，
 - 以及一些`练习`_作为热身
 
-.. _`强化学习`：https：//en.wikipedia.org/wiki/Reinforcement_learning
-.. _`深度学习`：http：//ufldl.stanford.edu/tutorial/
+.. _`强化学习`: https://en.wikipedia.org/wiki/Reinforcement_learning
+.. _`深度学习`: http://ufldl.stanford.edu/tutorial/
 
 我们为什么要做这个
 =================
