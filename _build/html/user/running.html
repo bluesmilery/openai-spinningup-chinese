@@ -1,0 +1,504 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>运行实验 &mdash; openai-spinningup-chinese 0.0.1 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="prev" title="算法" href="algorithms.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> openai-spinningup-chinese
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">User Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">安装</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">算法</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">运行实验</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id3">从命令行启动</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id8">使用命令行设置超参数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">一次启动多组实验</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">特殊标志</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id11">环境标志</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id12">缩写标志</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id13">配置标志</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id14">结果在哪里保存</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#suffix">后缀（suffix）是如何确定的？</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id15">附加内容</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id16">从脚本中启动</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#experimentgrid">使用ExperimentGrid</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">openai-spinningup-chinese</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>运行实验</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/user/running.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1><a class="toc-backref" href="#id21">运行实验</a><a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<div class="contents topic" id="id2">
+<p class="topic-title first">目录</p>
+<ul class="simple">
+<li><a class="reference internal" href="#id1" id="id21">运行实验</a><ul>
+<li><a class="reference internal" href="#id3" id="id22">从命令行启动</a><ul>
+<li><a class="reference internal" href="#id8" id="id23">使用命令行设置超参数</a></li>
+<li><a class="reference internal" href="#id9" id="id24">一次启动多组实验</a></li>
+<li><a class="reference internal" href="#id10" id="id25">特殊标志</a><ul>
+<li><a class="reference internal" href="#id11" id="id26">环境标志</a></li>
+<li><a class="reference internal" href="#id12" id="id27">缩写标志</a></li>
+<li><a class="reference internal" href="#id13" id="id28">配置标志</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id14" id="id29">结果在哪里保存</a><ul>
+<li><a class="reference internal" href="#suffix" id="id30">后缀（suffix）是如何确定的？</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id15" id="id31">附加内容</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id16" id="id32">从脚本中启动</a><ul>
+<li><a class="reference internal" href="#experimentgrid" id="id33">使用ExperimentGrid</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<p>感受深度强化学习的最佳方法之一是运行算法并查看它们在不同任务中的执行情况。而Spinning Up代码库使得小规模（本地）实验变得更加容易。在本节中，我们将讨论两种使用它们的方式：从命令行启动或者通过脚本中的函数调用来使用。</p>
+<div class="section" id="id3">
+<h2><a class="toc-backref" href="#id22">从命令行启动</a><a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>Spinning Up附有 <code class="docutils literal notranslate"><span class="pre">spinup/run.py</span></code> 文件。这是一个非常方便的工具，它可以让您从命令行轻松启动任何算法（超参数可随意设置）。它还可以作为观察训练好的策略以及绘图等实用工具的轻量级封装器，不过我们不会在这个页面上讨论这个功能（有关这些细节，请参阅 <a class="reference external" href="../user/saving_and_loading.html">实验输出</a> 和 <a class="reference external" href="../user/plot.html">绘图</a> 部分）。</p>
+<p>从命令行运行Spinning Up算法的标准方法是</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">spinup</span><span class="o">.</span><span class="n">run</span> <span class="p">[</span><span class="n">algo</span> <span class="n">name</span><span class="p">]</span> <span class="p">[</span><span class="n">experiment</span> <span class="n">flags</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>例如：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">spinup</span><span class="o">.</span><span class="n">run</span> <span class="n">ppo</span> <span class="o">--</span><span class="n">env</span> <span class="n">Walker2d</span><span class="o">-</span><span class="n">v2</span> <span class="o">--</span><span class="n">exp_name</span> <span class="n">walker</span>
+</pre></div>
+</div>
+<div class="admonition- admonition">
+<p class="first admonition-title">详细的快速入门指南</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">spinup</span><span class="o">.</span><span class="n">run</span> <span class="n">ppo</span> <span class="o">--</span><span class="n">exp_name</span> <span class="n">ppo_ant</span> <span class="o">--</span><span class="n">env</span> <span class="n">Ant</span><span class="o">-</span><span class="n">v2</span> <span class="o">--</span><span class="n">clip_ratio</span> <span class="mf">0.1</span> <span class="mf">0.2</span>
+    <span class="o">--</span><span class="n">hid</span><span class="p">[</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="mi">32</span><span class="p">,</span><span class="mi">32</span><span class="p">]</span> <span class="p">[</span><span class="mi">64</span><span class="p">,</span><span class="mi">32</span><span class="p">]</span> <span class="o">--</span><span class="n">act</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">tanh</span> <span class="o">--</span><span class="n">seed</span> <span class="mi">0</span> <span class="mi">10</span> <span class="mi">20</span> <span class="o">--</span><span class="n">dt</span>
+    <span class="o">--</span><span class="n">data_dir</span> <span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">data</span>
+</pre></div>
+</div>
+<p>在 <code class="docutils literal notranslate"><span class="pre">Ant-v2</span></code> Gym环境中运行PPO，各种设置由标志（flag）控制。</p>
+<p><code class="docutils literal notranslate"><span class="pre">clip_ratio</span></code> ， <code class="docutils literal notranslate"><span class="pre">hid</span></code> 和 <code class="docutils literal notranslate"><span class="pre">act</span></code> 是设置一些算法超参数的标志。您可以为超参数提供多组值以运行多组实验。阅读文档来查看可以设置的超参数（单击此处查看 <a class="reference external" href="../algorithm/ppo.html#spinup.ppo">PPO文档</a> ）。</p>
+<p><code class="docutils literal notranslate"><span class="pre">hid</span></code> 和 <code class="docutils literal notranslate"><span class="pre">act</span></code> 是 <a class="reference external" href="../user/escape.html＃shortcut-flags">特殊缩写标志</a> ，用于设置由算法训练的神经网络的隐层大小和激活函数。</p>
+<p><code class="docutils literal notranslate"><span class="pre">seed</span></code> 标志会设置随机数生成器的种子。 RL算法具有很高的方差，因此尝试使用多个不同的种子来了解性能如何变化。</p>
+<p><code class="docutils literal notranslate"><span class="pre">dt</span></code> 标志确保保存目录名称中包含时间戳（否则不会包含，除非你在 <code class="docutils literal notranslate"><span class="pre">spinup/user_config.py</span></code> 中设置 <code class="docutils literal notranslate"><span class="pre">FORCE_DATESTAMP=True</span></code> ）。</p>
+<p><code class="docutils literal notranslate"><span class="pre">data_dir</span></code> 标志允许您设置结果保存到哪个文件夹。默认值由 <code class="docutils literal notranslate"><span class="pre">spinup/user_config.py</span></code> 中的 <code class="docutils literal notranslate"><span class="pre">DEFAULT_DATA_DIR</span></code> 设置，默认值为 <code class="docutils literal notranslate"><span class="pre">spinningup</span></code> 文件夹中的子文件 <code class="docutils literal notranslate"><span class="pre">data</span></code> （除非你改变它）。</p>
+<p><a class="reference external" href="../user/escape.html＃where-results-are-saved">保存目录名称</a> 基于 <code class="docutils literal notranslate"><span class="pre">exp_name</span></code> 和任何使用了多组值的标志。目录名称中将显示标志的缩写，而不是完整标志名称。用户可以在标志后的方括号中提供缩写，例如 <code class="docutils literal notranslate"><span class="pre">--hid[h]</span></code> ;否则会使用是标志的子串作为缩写（ <code class="docutils literal notranslate"><span class="pre">clip_ratio</span></code> 变成 <code class="docutils literal notranslate"><span class="pre">cli</span></code> ）。为了说明，使用 <code class="docutils literal notranslate"><span class="pre">clip_ratio=0.1</span></code> ， <code class="docutils literal notranslate"><span class="pre">hid=[32,32]</span></code> 和 <code class="docutils literal notranslate"><span class="pre">seed=10</span></code> 运行的保存目录将是：</p>
+<div class="last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">YY</span><span class="o">-</span><span class="n">MM</span><span class="o">-</span><span class="n">DD_ppo_ant_cli0</span><span class="o">-</span><span class="mi">1</span><span class="n">_h32</span><span class="o">-</span><span class="mi">32</span><span class="o">/</span><span class="n">YY</span><span class="o">-</span><span class="n">MM</span><span class="o">-</span><span class="n">DD_HH</span><span class="o">-</span><span class="n">MM</span><span class="o">-</span><span class="n">SS</span><span class="o">-</span><span class="n">ppo_ant_cli0</span><span class="o">-</span><span class="mi">1</span><span class="n">_h32</span><span class="o">-</span><span class="mi">32</span><span class="n">_seed10</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id8">
+<h3><a class="toc-backref" href="#id23">使用命令行设置超参数</a><a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h3>
+<p>每个算法中的每个超参数都可以直接从命令行进行控制。如果 <code class="docutils literal notranslate"><span class="pre">kwarg</span></code> 是算法函数调用的有效关键字参数，那么你可以使用标志 <code class="docutils literal notranslate"><span class="pre">--kwarg</span></code> 为其设置值。要找出哪些关键字参数是可用的，请参阅算法的文档页面，或尝试</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">spinup</span><span class="o">.</span><span class="n">run</span> <span class="p">[</span><span class="n">algo</span> <span class="n">name</span><span class="p">]</span> <span class="o">--</span><span class="n">help</span>
+</pre></div>
+</div>
+<p>来查看文档。</p>
+<div class="admonition- admonition">
+<p class="first admonition-title">你所应该知道的</p>
+<p>参数值在使用之前会通过 <code class="docutils literal notranslate"><span class="pre">eval()</span></code> 传入，因此您可以直接从命令行描述一些函数和对象。例如：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">spinup</span><span class="o">.</span><span class="n">run</span> <span class="n">ppo</span> <span class="o">--</span><span class="n">env</span> <span class="n">Walker2d</span><span class="o">-</span><span class="n">v2</span> <span class="o">--</span><span class="n">exp_name</span> <span class="n">walker</span> <span class="o">--</span><span class="n">act</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">elu</span>
+</pre></div>
+</div>
+<p class="last">将 <code class="docutils literal notranslate"><span class="pre">tf.nn.elu</span></code> 设置为激活函数。</p>
+</div>
+<div class="admonition- admonition">
+<p class="first admonition-title">你所应该知道的</p>
+<p>对于采用dict值的kwargs有一些很好的处理。不必须像下面这样提供</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">key</span> <span class="nb">dict</span><span class="p">(</span><span class="n">v1</span><span class="o">=</span><span class="n">value_1</span><span class="p">,</span> <span class="n">v2</span><span class="o">=</span><span class="n">value_2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>你可以这样</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">key</span><span class="p">:</span><span class="n">v1</span> <span class="n">value_1</span> <span class="o">--</span><span class="n">key</span><span class="p">:</span><span class="n">v2</span> <span class="n">value_2</span>
+</pre></div>
+</div>
+<p class="last">它们会得到相同的结果。</p>
+</div>
+</div>
+<div class="section" id="id9">
+<h3><a class="toc-backref" href="#id24">一次启动多组实验</a><a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h3>
+<p>您可以简单地通过为给定参数提供多个值来 <strong>串行</strong> 启动多组实验。（每种可能的值组合都会启动一次实验）</p>
+<p>例如，要使用不同的随机种子（0,10和20）而其他参数相同，请执行以下操作：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">spinup</span><span class="o">.</span><span class="n">run</span> <span class="n">ppo</span> <span class="o">--</span><span class="n">env</span> <span class="n">Walker2d</span><span class="o">-</span><span class="n">v2</span> <span class="o">--</span><span class="n">exp_name</span> <span class="n">walker</span> <span class="o">--</span><span class="n">seed</span> <span class="mi">0</span> <span class="mi">10</span> <span class="mi">20</span>
+</pre></div>
+</div>
+<p>实验不是并行启动的，因为它们使用了足够多的系统资源，同时执行多个实验并不会获得加速。</p>
+</div>
+<div class="section" id="id10">
+<h3><a class="toc-backref" href="#id25">特殊标志</a><a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h3>
+<p>一些标志会得到特殊对待。</p>
+<div class="section" id="id11">
+<h4><a class="toc-backref" href="#id26">环境标志</a><a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h4>
+<dl class="option">
+<dt id="cmdoption-env">
+<code class="descname">--env</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--env_name</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-env" title="永久链接至目标">¶</a></dt>
+<dd><p><em>string</em>。OpenAI Gym中的环境名称。所有Spinning Up中的算法都被实现为可以接受 <code class="docutils literal notranslate"><span class="pre">env_fn</span></code> 作为参数的函数，其中 <code class="docutils literal notranslate"><span class="pre">env_fn</span></code> 必须是构建RL环境副本的可调用函数。由于最常见的用例是Gym环境，但是所有这些都是通过 <code class="docutils literal notranslate"><span class="pre">gym.make(env_name)</span></code> 构建的，我们允许你在命令行只需指定 <code class="docutils literal notranslate"><span class="pre">env_name</span></code> （或简称 <code class="docutils literal notranslate"><span class="pre">env</span></code> ），它会被转换为lambda函数，构建正确的gym环境。</p>
+</dd></dl>
+
+</div>
+<div class="section" id="id12">
+<h4><a class="toc-backref" href="#id27">缩写标志</a><a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h4>
+<p>一些算法参数相对较长，我们为它们启用了缩写：</p>
+<dl class="option">
+<dt id="cmdoption-hid">
+<code class="descname">--hid</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--ac_kwargs:hidden_sizes</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-hid" title="永久链接至目标">¶</a></dt>
+<dd><p><em>list of ints</em>。设置神经网络中隐藏层的大小（策略和值函数）。</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-act">
+<code class="descname">--act</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--ac_kwargs:activation</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-act" title="永久链接至目标">¶</a></dt>
+<dd><p><em>tf op</em>。actor和critic中神经网络的激活函数。</p>
+</dd></dl>
+
+<p>这些标志对所有当前的Spinning Up算法都有效。</p>
+</div>
+<div class="section" id="id13">
+<h4><a class="toc-backref" href="#id28">配置标志</a><a class="headerlink" href="#id13" title="永久链接至标题">¶</a></h4>
+<p>这些标志不是任何算法的超参数，但会以某种方式更改实验配置。</p>
+<dl class="option">
+<dt id="cmdoption-cpu">
+<code class="descname">--cpu</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--num_cpu</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-cpu" title="永久链接至目标">¶</a></dt>
+<dd><p><em>int</em>。如果设置了此标志，那么将通过MPI连接的这些进程启动实验，每个进程一个。有些算法适合这种并行化，但不是全部算法都适合。如果您尝试为不兼容的算法设置 <code class="docutils literal notranslate"><span class="pre">num_cpu</span></code> &gt; 1，则会引发错误。您还可以设置 <code class="docutils literal notranslate"><span class="pre">--num_cpu</span> <span class="pre">auto</span></code> ，它将自动使用机器上所有可用的CPU。</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-exp-name">
+<code class="descname">--exp_name</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-exp-name" title="永久链接至目标">¶</a></dt>
+<dd><p><em>string</em>。实验名称。这用于命名每个实验的保存目录。默认为 “cmd” + [算法名称]。</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-data-dir">
+<code class="descname">--data_dir</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-data-dir" title="永久链接至目标">¶</a></dt>
+<dd><p><em>path</em>。为一次实验或一组实验设置基本保存目录。如果没有给出，将使用 <code class="docutils literal notranslate"><span class="pre">spinup/user_config.py</span></code> 中的 <code class="docutils literal notranslate"><span class="pre">DEFAULT_DATA_DIR</span></code> 值。</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-datestamp">
+<code class="descname">--datestamp</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-datestamp" title="永久链接至目标">¶</a></dt>
+<dd><p><em>bool</em>。在实验的保存目录名称中包含日期和时间。</p>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="id14">
+<h3><a class="toc-backref" href="#id29">结果在哪里保存</a><a class="headerlink" href="#id14" title="永久链接至标题">¶</a></h3>
+<p>一次实验的结果会存储在</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data_dir</span><span class="o">/</span><span class="p">[</span><span class="n">outer_prefix</span><span class="p">]</span><span class="n">exp_name</span><span class="p">[</span><span class="n">suffix</span><span class="p">]</span><span class="o">/</span><span class="p">[</span><span class="n">inner_prefix</span><span class="p">]</span><span class="n">exp_name</span><span class="p">[</span><span class="n">suffix</span><span class="p">]</span><span class="n">_s</span><span class="p">[</span><span class="n">seed</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>其中</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">data_dir</span></code> 是 <code class="docutils literal notranslate"><span class="pre">--data_dir</span></code> 标志的值（如果没有给出 <code class="docutils literal notranslate"><span class="pre">-data_dir</span></code> ，则使用 <code class="docutils literal notranslate"><span class="pre">spinup/user_config.py</span></code> 中的 <code class="docutils literal notranslate"><span class="pre">DEFAULT_DATA_DIR</span></code> ）</li>
+<li>如果设置 <code class="docutils literal notranslate"><span class="pre">--datestamp</span></code> 标志， <code class="docutils literal notranslate"><span class="pre">outer_prefix</span></code> 则是一个 <code class="docutils literal notranslate"><span class="pre">YY-MM-DD_</span></code> 的时间戳，否则没有</li>
+<li>如果设置 <code class="docutils literal notranslate"><span class="pre">--datestamp</span></code> 标志， <code class="docutils literal notranslate"><span class="pre">inner_prefix</span></code> 则是一个 <code class="docutils literal notranslate"><span class="pre">YY-MM-DD_HH-MM-SS-</span></code> 的时间戳，否则没有</li>
+<li><code class="docutils literal notranslate"><span class="pre">suffix</span></code> 是一个基于实验超参数的特殊字符串</li>
+</ul>
+<div class="section" id="suffix">
+<h4><a class="toc-backref" href="#id30">后缀（suffix）是如何确定的？</a><a class="headerlink" href="#suffix" title="永久链接至标题">¶</a></h4>
+<p>如果您一次运行多组实验，那就会包含后缀，并且它们仅包含对实验不同的超参数的引用（除了随机种子）。这么做的目的是确保类似实验的结果（除了种子之外共享所有参数的结果）被存放在同一文件夹中。</p>
+<p>通过将超参数的 <em>缩写</em> 与它们的值组合来构造后缀，其中缩写是 1）从超参数名称自动构造 或 2）由用户提供。用户可以在kwarg标志之后用方括号写入来提供缩写。</p>
+<p>例如：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">spinup</span><span class="o">.</span><span class="n">run</span> <span class="n">ddpg</span> <span class="o">--</span><span class="n">env</span> <span class="n">Hopper</span><span class="o">-</span><span class="n">v2</span> <span class="o">--</span><span class="n">hid</span><span class="p">[</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="mi">300</span><span class="p">]</span> <span class="p">[</span><span class="mi">128</span><span class="p">,</span><span class="mi">128</span><span class="p">]</span> <span class="o">--</span><span class="n">act</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">tanh</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">relu</span>
+</pre></div>
+</div>
+<p>在这里， <code class="docutils literal notranslate"><span class="pre">--hid</span></code> 标志由 <strong>用户提供了缩写</strong> <code class="docutils literal notranslate"><span class="pre">h</span></code> 。用户没有给出 <code class="docutils literal notranslate"><span class="pre">--act</span></code> 标志的缩写，因此将自动构造一个。</p>
+<p>在这种情况下产生的后缀是：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">_h128</span><span class="o">-</span><span class="mi">128</span><span class="n">_ac</span><span class="o">-</span><span class="n">actrelu</span>
+<span class="n">_h128</span><span class="o">-</span><span class="mi">128</span><span class="n">_ac</span><span class="o">-</span><span class="n">acttanh</span>
+<span class="n">_h300_ac</span><span class="o">-</span><span class="n">actrelu</span>
+<span class="n">_h300_ac</span><span class="o">-</span><span class="n">acttanh</span>
+</pre></div>
+</div>
+<p>注意， <code class="docutils literal notranslate"><span class="pre">h</span></code> 是由用户给出的。 <code class="docutils literal notranslate"><span class="pre">ac-act</span></code> 缩写是由 <code class="docutils literal notranslate"><span class="pre">ac_kwargs:activation</span></code> （ <code class="docutils literal notranslate"><span class="pre">act</span></code> 标志的真实名称）构成的。</p>
+</div>
+</div>
+<div class="section" id="id15">
+<h3><a class="toc-backref" href="#id31">附加内容</a><a class="headerlink" href="#id15" title="永久链接至标题">¶</a></h3>
+<div class="admonition- admonition">
+<p class="first admonition-title">你其实并不需要知道这个</p>
+<p>每个算法都位于一个文件 <code class="docutils literal notranslate"><span class="pre">spinup/algos/ALGO_NAME/ALGO_NAME.py</span></code> 中，这些文件可以直接从命令行运行，并带有一组有限的参数（其中一些参数不同于 <code class="docutils literal notranslate"><span class="pre">spinup/run.py</span></code> ）。然而，单个算法文件中的命令行支持基本上是残留的，这 <strong>不是</strong> 推荐的方式。</p>
+<p class="last">这个文档页面不会描述那些命令行调用， <em>只会</em> 在``spinup/run.py`` 文件中描述。</p>
+</div>
+</div>
+</div>
+<div class="section" id="id16">
+<h2><a class="toc-backref" href="#id32">从脚本中启动</a><a class="headerlink" href="#id16" title="永久链接至标题">¶</a></h2>
+<p>每个算法都被实现为python函数，可以直接从 <code class="docutils literal notranslate"><span class="pre">spinup</span></code> 包导入，例如</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">spinup</span> <span class="k">import</span> <span class="n">ppo</span>
+</pre></div>
+</div>
+<p>有关参数的完整说明，请参阅每个算法的文档页面。这些方法可用于设置专门的自定义实验，例如：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">spinup</span> <span class="kn">import</span> <span class="n">ppo</span>
+<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="kn">as</span> <span class="nn">tf</span>
+<span class="kn">import</span> <span class="nn">gym</span>
+
+<span class="n">env_fn</span> <span class="o">=</span> <span class="k">lambda</span> <span class="p">:</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s1">&#39;LunarLander-v2&#39;</span><span class="p">)</span>
+
+<span class="n">ac_kwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">hidden_sizes</span><span class="o">=</span><span class="p">[</span><span class="mi">64</span><span class="p">,</span><span class="mi">64</span><span class="p">],</span> <span class="n">activation</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">relu</span><span class="p">)</span>
+
+<span class="n">logger_kwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">output_dir</span><span class="o">=</span><span class="s1">&#39;path/to/output_dir&#39;</span><span class="p">,</span> <span class="n">exp_name</span><span class="o">=</span><span class="s1">&#39;experiment_name&#39;</span><span class="p">)</span>
+
+<span class="n">ppo</span><span class="p">(</span><span class="n">env_fn</span><span class="o">=</span><span class="n">env_fn</span><span class="p">,</span> <span class="n">ac_kwargs</span><span class="o">=</span><span class="n">ac_kwargs</span><span class="p">,</span> <span class="n">steps_per_epoch</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">250</span><span class="p">,</span> <span class="n">logger_kwargs</span><span class="o">=</span><span class="n">logger_kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="experimentgrid">
+<h3><a class="toc-backref" href="#id33">使用ExperimentGrid</a><a class="headerlink" href="#experimentgrid" title="永久链接至标题">¶</a></h3>
+<p>在机器学习研究中，用不同的参数运行同一算法通常很有用。Spinning Up使用一个简单的工具来实现这一点，称为 <a class="reference external" href="../utils/run_utils.html#experimentgrid">ExperimentGrid</a> 。</p>
+<p>考虑 <code class="docutils literal notranslate"><span class="pre">spinup/examples/bench_ppo_cartpole.py</span></code> 中的示例：</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="kn">from</span> <span class="nn">spinup.utils.run_utils</span> <span class="kn">import</span> <span class="n">ExperimentGrid</span>
+ <span class="kn">from</span> <span class="nn">spinup</span> <span class="kn">import</span> <span class="n">ppo</span>
+ <span class="kn">import</span> <span class="nn">tensorflow</span> <span class="kn">as</span> <span class="nn">tf</span>
+
+ <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+     <span class="kn">import</span> <span class="nn">argparse</span>
+     <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
+     <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--cpu&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+     <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--num_runs&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+     <span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+
+     <span class="n">eg</span> <span class="o">=</span> <span class="n">ExperimentGrid</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;ppo-bench&#39;</span><span class="p">)</span>
+     <span class="n">eg</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;env_name&#39;</span><span class="p">,</span> <span class="s1">&#39;CartPole-v0&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="bp">True</span><span class="p">)</span>
+     <span class="n">eg</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;seed&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">10</span><span class="o">*</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">num_runs</span><span class="p">)])</span>
+     <span class="n">eg</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;epochs&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+     <span class="n">eg</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;steps_per_epoch&#39;</span><span class="p">,</span> <span class="mi">4000</span><span class="p">)</span>
+     <span class="n">eg</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;ac_kwargs:hidden_sizes&#39;</span><span class="p">,</span> <span class="p">[(</span><span class="mi">32</span><span class="p">,),</span> <span class="p">(</span><span class="mi">64</span><span class="p">,</span><span class="mi">64</span><span class="p">)],</span> <span class="s1">&#39;hid&#39;</span><span class="p">)</span>
+     <span class="n">eg</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;ac_kwargs:activation&#39;</span><span class="p">,</span> <span class="p">[</span><span class="n">tf</span><span class="o">.</span><span class="n">tanh</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">relu</span><span class="p">],</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+     <span class="n">eg</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">ppo</span><span class="p">,</span> <span class="n">num_cpu</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">cpu</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<p>在创建ExperimentGrid对象之后，将参数添加到其中</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">eg</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">param_name</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">shorthand</span><span class="p">,</span> <span class="n">in_name</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>其中 <code class="docutils literal notranslate"><span class="pre">in_name</span></code> 强制参数出现在实验名称中，即使它在所有实验中具有相同的值。</p>
+<p>添加完所有参数后，</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">eg</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">thunk</span><span class="p">,</span> <span class="o">**</span><span class="n">run_kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>通过向函数 <code class="docutils literal notranslate"><span class="pre">thunk</span></code> 提供kwargs配置，在网格中运行所有实验（每个有效配置一个实验）。 <code class="docutils literal notranslate"><span class="pre">ExperimentGrid.run</span></code> 使用名为 <a class="reference external" href="../utils/run_utils.html#spinup.utils.run_utils.call_experiment">call_experiment</a> 的函数启动 <code class="docutils literal notranslate"><span class="pre">thunk</span></code> ， <code class="docutils literal notranslate"><span class="pre">**run_kwargs</span></code> 指定 <code class="docutils literal notranslate"><span class="pre">call_experiment</span></code> 的行为。更详细信息请参阅 <a class="reference external" href="../utils/run_utils.html#experimentgrid">文档页面</a> 。</p>
+<p>除了缺少缩写方式的kwargs（你不能在 <code class="docutils literal notranslate"><span class="pre">ExperimentGrid</span></code> 中使用 <code class="docutils literal notranslate"><span class="pre">hid</span></code> 来代替 <code class="docutils literal notranslate"><span class="pre">ac_kwargs:hidden_​​sizes</span></code> ）， <code class="docutils literal notranslate"><span class="pre">ExperimentGrid</span></code> 的运行方式与从命令行运行一样。（事实上​​， <code class="docutils literal notranslate"><span class="pre">spinup.run</span></code> 在在其内部就使用了 <code class="docutils literal notranslate"><span class="pre">ExperimentGrid</span></code> ）</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="algorithms.html" class="btn btn-neutral" title="算法" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Gai
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
