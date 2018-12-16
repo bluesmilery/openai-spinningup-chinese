@@ -29,7 +29,7 @@ Spinning Up附有 ``spinup/run.py`` 文件。这是一个非常方便的工具�
 
     python -m spinup.run ppo --env Walker2d-v2 --exp_name walker
 
-.. admonition:: 详细的快速入门指南
+.. admonition:: Detailed Quickstart Guide
 
     .. parsed-literal::
 
@@ -72,7 +72,7 @@ Spinning Up附有 ``spinup/run.py`` 文件。这是一个非常方便的工具�
 
 来查看文档。
 
-.. admonition:: 你所应该知道的
+.. admonition:: You Should Know
 
     参数值在使用之前会通过 ``eval()`` 传入，因此您可以直接从命令行描述一些函数和对象。例如：
 
@@ -82,7 +82,7 @@ Spinning Up附有 ``spinup/run.py`` 文件。这是一个非常方便的工具�
 
     将 ``tf.nn.elu`` 设置为激活函数。
 
-.. admonition:: 你所应该知道的
+.. admonition:: You Should Know
 
     对于采用dict值的kwargs有一些很好的处理。不必须像下面这样提供
 
@@ -211,7 +211,7 @@ Spinning Up附有 ``spinup/run.py`` 文件。这是一个非常方便的工具�
 附加内容
 ---------------
 
-.. admonition:: 你其实并不需要知道这个
+.. admonition:: You Don't Actually Need to Know This One
 
     每个算法都位于一个文件 ``spinup/algos/ALGO_NAME/ALGO_NAME.py`` 中，这些文件可以直接从命令行运行，并带有一组有限的参数（其中一些参数不同于 ``spinup/run.py`` ）。然而，单个算法文件中的命令行支持基本上是残留的，这 **不是** 推荐的方式。
 

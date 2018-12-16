@@ -1,0 +1,375 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>实验输出 &mdash; openai-spinningup-chinese 0.0.1 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="prev" title="运行实验" href="running.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> openai-spinningup-chinese
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">User Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">安装</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">算法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="running.html">运行实验</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">实验输出</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id3">算法输出</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">保存目录的位置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">加载和运行经过训练的策略</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id7">如果环境成功保存了</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#environment-not-found">出现Environment Not Found错误</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">使用已经训练好的值函数</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">openai-spinningup-chinese</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>实验输出</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/user/saving_and_loading.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1><a class="toc-backref" href="#id9">实验输出</a><a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<div class="contents topic" id="id2">
+<p class="topic-title first">目录</p>
+<ul class="simple">
+<li><a class="reference internal" href="#id1" id="id9">实验输出</a><ul>
+<li><a class="reference internal" href="#id3" id="id10">算法输出</a></li>
+<li><a class="reference internal" href="#id5" id="id11">保存目录的位置</a></li>
+<li><a class="reference internal" href="#id6" id="id12">加载和运行经过训练的策略</a><ul>
+<li><a class="reference internal" href="#id7" id="id13">如果环境成功保存了</a></li>
+<li><a class="reference internal" href="#environment-not-found" id="id14">出现Environment Not Found错误</a></li>
+<li><a class="reference internal" href="#id8" id="id15">使用已经训练好的值函数</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<p>在本节中，我们将介绍</p>
+<ul class="simple">
+<li>Spinning Up的算法实现会输出什么，</li>
+<li>它们存储的格式以及它们的组织方式，</li>
+<li>存储它们的位置以及如何更改，</li>
+<li>以及如何加载和运行经过训练的策略。</li>
+</ul>
+<div class="admonition-you-should-know admonition">
+<p class="first admonition-title">You Should Know</p>
+<p class="last">Spinning Up的算法实现目前无法恢复训练已经被部分训练的agents。如果您认为此功能很重要，请告诉我们—或者将其视为一个具有挑战的项目！</p>
+</div>
+<div class="section" id="id3">
+<h2><a class="toc-backref" href="#id10">算法输出</a><a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>每个算法都能保存训练运行的超参数配置，学习进度，训练好的agents和值函数，以及环境副本（如果可能的话，以便于同时加载agent和环境）。输出目录包含以下内容：</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">simple_save/</span></code> 。包含重建训练好的agent和值函数所需的所有东西的目录。( <a class="reference internal" href="#id4">详见下文</a> )</li>
+<li><code class="docutils literal notranslate"><span class="pre">config.json</span></code> 。包含启动训练时所用到的参数的详尽描述。如果你传递了一些无法解析为JSON的东西，它应该由记录器来处理，并且会以字符串来呈现配置文件。注意：这仅用于记录保存。目前还不支持从配置文件启动实验。</li>
+<li><code class="docutils literal notranslate"><span class="pre">progress.txt</span></code> 。一个使用制表符作为分隔值文件，包含记录器在整个训练过程中记录的指标记录。例如， <code class="docutils literal notranslate"><span class="pre">Epoch</span></code> ， <code class="docutils literal notranslate"><span class="pre">AverageEpRet</span></code> 等。</li>
+<li><code class="docutils literal notranslate"><span class="pre">vars.pkl</span></code> 。一个序列化文件，包含应该存储的算法状态的任何内容。目前，所有算法仅使用它来保存环境的副本。</li>
+</ul>
+<div class="admonition-you-should-know admonition">
+<p class="first admonition-title">You Should Know</p>
+<p class="last">有时保存环境会失败是因为环境无法被序列化，并且 <code class="docutils literal notranslate"><span class="pre">vars.pkl</span></code> 文件是空的。这对于老版本的Gym中的Gym Box2D环境来说是个问题，它不能以这种方式保存。</p>
+</div>
+<p id="id4"><code class="docutils literal notranslate"><span class="pre">simple_save</span></code> 目录中包含一下内容：</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">variables/</span></code> 。该目录内含有Tensorflow Saver的输出内容。关于 <a class="reference external" href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/saved_model/README.md">Tensorflow SavedModel</a> 请见文档。</li>
+<li><code class="docutils literal notranslate"><span class="pre">model_info.pkl</span></code> 。包含加载已保存的模型后对模型进行解包所需的信息。</li>
+<li><code class="docutils literal notranslate"><span class="pre">saved_model.pb</span></code> 。一个protocol buffer文件，用于 <a class="reference external" href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/saved_model/README.md">Tensorflow SavedModel</a>.</li>
+</ul>
+<div class="admonition-you-should-know admonition">
+<p class="first admonition-title">You Should Know</p>
+<p class="last">这里唯一一个你必须“手工”使用的文件是 <code class="docutils literal notranslate"><span class="pre">config.json</span></code> 文件。我们的agent测试工具将从 <code class="docutils literal notranslate"><span class="pre">simple_save</span> <span class="pre">/</span></code> 目录和 <code class="docutils literal notranslate"><span class="pre">vars.pkl</span></code> 文件中加载内容，我们的绘图仪解释 <code class="docutils literal notranslate"><span class="pre">progress.txt</span></code> 的内容，这些是用于连接这些产出的正确工具。但是没有用于 <code class="docutils literal notranslate"><span class="pre">config.json</span></code> 的工具，所以如果你忘记了你运行实验的超参数，你可以仔细查看这个文件。</p>
+</div>
+</div>
+<div class="section" id="id5">
+<h2><a class="toc-backref" href="#id11">保存目录的位置</a><a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<p>默认情况下，实验结果将保存在与Spinning Up软件包相同的目录中，名为 <code class="docutils literal notranslate"><span class="pre">data</span></code> 的文件夹中：</p>
+<pre class="literal-block">
+spinningup/
+    <strong>data/</strong>
+        ...
+    docs/
+        ...
+    spinup/
+        ...
+    LICENSE
+    setup.py
+</pre>
+<p>您可以通过修改 <code class="docutils literal notranslate"><span class="pre">spinup/user_config.py</span></code> 中的 <code class="docutils literal notranslate"><span class="pre">DEFAULT_DATA_DIR</span></code> 来更改结果的默认保存目录。</p>
+</div>
+<div class="section" id="id6">
+<h2><a class="toc-backref" href="#id12">加载和运行经过训练的策略</a><a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id7">
+<h3><a class="toc-backref" href="#id13">如果环境成功保存了</a><a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h3>
+<p>对于环境与agent一起成功保存的情况，可以使用以下方法观察受过训练的agent在环境中的行为：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">spinup</span><span class="o">.</span><span class="n">run</span> <span class="n">test_policy</span> <span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">output_directory</span>
+</pre></div>
+</div>
+<p>这里有几个选项标志：</p>
+<dl class="option">
+<dt id="cmdoption-l">
+<code class="descname">-l</code><code class="descclassname"> L</code><code class="descclassname">, </code><code class="descname">--len</code><code class="descclassname">=L</code><code class="descclassname">, </code><code class="descname">default</code><code class="descclassname">=0</code><a class="headerlink" href="#cmdoption-l" title="永久链接至目标">¶</a></dt>
+<dd><p><em>int</em>。测试 episode / trajectory / rollout 的最大长度。默认值为0表示没有最大episode长度，episode只在agent到达环境的终止状态时才会结束。（注意：设置L=0不会阻止TimeLimit包装器包含的Gym环境在达到预设的最大episode长度时结束）</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-n">
+<code class="descname">-n</code><code class="descclassname"> N</code><code class="descclassname">, </code><code class="descname">--episodes</code><code class="descclassname">=N</code><code class="descclassname">, </code><code class="descname">default</code><code class="descclassname">=100</code><a class="headerlink" href="#cmdoption-n" title="永久链接至目标">¶</a></dt>
+<dd><p><em>int</em>。运行agent的测试episode数。</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-nr">
+<code class="descname">-nr</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--norender</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-nr" title="永久链接至目标">¶</a></dt>
+<dd><p>不要将测试episode渲染到屏幕上。在这种情况下， <code class="docutils literal notranslate"><span class="pre">test_policy</span></code> 只会打印episode的回报和长度。（使用案例：渲染器减慢了测试过程，您只是想快速了解agent的执行情况，因此您不必特别注意观察它。）</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-i">
+<code class="descname">-i</code><code class="descclassname"> I</code><code class="descclassname">, </code><code class="descname">--itr</code><code class="descclassname">=I</code><code class="descclassname">, </code><code class="descname">default</code><code class="descclassname">=-1</code><a class="headerlink" href="#cmdoption-i" title="永久链接至目标">¶</a></dt>
+<dd><p><em>int</em>。这个选项用于在此程序包中的算法不支持，但它们很容易修改的特殊情况。使用案例：有时在训练中从许多不同时刻观察训练的agent是很好的（例如，在迭代50,100,150等处观看）。记录器可以执行此操作—从这些不同的时刻保存agenmt的快照，以便以后可以运行和观察它们。在这种情况下，您可以使用此标志指定运行哪次迭代。但同样重要的是：默认情况下，算法只保存agent的最新快照，旧快照会被覆盖。</p>
+<p>这个标志的默认值表示“使用最新的快照”。</p>
+<p>要修改算法以便让它生成多个快照，请找到以下行（所有算法中都存在）：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">epoch</span> <span class="o">%</span> <span class="n">save_freq</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">epoch</span> <span class="o">==</span> <span class="n">epochs</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">save_state</span><span class="p">({</span><span class="s1">&#39;env&#39;</span><span class="p">:</span> <span class="n">env</span><span class="p">},</span> <span class="bp">None</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>将其修改为</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">epoch</span> <span class="o">%</span> <span class="n">save_freq</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">epoch</span> <span class="o">==</span> <span class="n">epochs</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">save_state</span><span class="p">({</span><span class="s1">&#39;env&#39;</span><span class="p">:</span> <span class="n">env</span><span class="p">},</span> <span class="n">epoch</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>确保还将 <code class="docutils literal notranslate"><span class="pre">save_freq</span></code> 设置为合理的值（因为如果它默认为1，那么你的输出目录会被快照迅速填充满，每份快照都会存在一个 <code class="docutils literal notranslate"><span class="pre">simple_save</span></code> 文件夹中）。</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-d">
+<code class="descname">-d</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--deterministic</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-d" title="永久链接至目标">¶</a></dt>
+<dd><p>另一个特例，仅用于SAC。Spinning Up SAC会训练一个随机策略，但使用动作分布的确定性 <em>均值</em> 进行评估。 <code class="docutils literal notranslate"><span class="pre">test_policy</span></code> 将默认使用SAC训练的随机策略，但您应设置确定性标志以观察确定性均值策略（SAC的正确评估策略）。此标志不用于任何其他算法。</p>
+</dd></dl>
+
+</div>
+<div class="section" id="environment-not-found">
+<h3><a class="toc-backref" href="#id14">出现Environment Not Found错误</a><a class="headerlink" href="#environment-not-found" title="永久链接至标题">¶</a></h3>
+<p>如果环境未成功保存，您可能会发现 <code class="docutils literal notranslate"><span class="pre">test_policy.py</span></code> 报错</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Traceback (most recent call last):
+  File &quot;spinup/utils/test_policy.py&quot;, line 88, in &lt;module&gt;
+    run_policy(env, get_action, args.len, args.episodes, not(args.norender))
+  File &quot;spinup/utils/test_policy.py&quot;, line 50, in run_policy
+    &quot;page on Experiment Outputs for how to handle this situation.&quot;
+AssertionError: Environment not found!
+
+这看起来像是环境没有被保存，我们无法在其中运行agent。 :(
+
+查看实验输出的readthedocs页面，了解如何处理这种情况。
+</pre></div>
+</div>
+<p>在这种情况下，只要您可以轻松地重建您的环境，观察您的agent执行情况稍微有点痛苦，但并非不可能。在IPython中尝试以下内容：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">spinup.utils.test_policy</span> <span class="k">import</span> <span class="n">load_policy</span><span class="p">,</span> <span class="n">run_policy</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">your_env</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">_</span><span class="p">,</span> <span class="n">get_action</span> <span class="o">=</span> <span class="n">load_policy</span><span class="p">(</span><span class="s1">&#39;/path/to/output_directory&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">env</span> <span class="o">=</span> <span class="n">your_env</span><span class="o">.</span><span class="n">make</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">run_policy</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">get_action</span><span class="p">)</span>
+<span class="go">Logging data to /tmp/experiments/1536150702/progress.txt</span>
+<span class="go">Episode 0    EpRet -163.830      EpLen 93</span>
+<span class="go">Episode 1    EpRet -346.164      EpLen 99</span>
+<span class="gp">...</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id8">
+<h3><a class="toc-backref" href="#id15">使用已经训练好的值函数</a><a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">test_policy.py</span></code> 工具不会帮助你查看已经训练好的值函数，如果你想使用它们，你必须手动处理。查看 <a class="reference external" href="../utils/logger.html#spinup.utils.logx.restore_tf_graph">restore_tf_graph</a> 函数的文档，了解具体方法。</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="running.html" class="btn btn-neutral" title="运行实验" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Gai
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -2,6 +2,7 @@
 安装
 ============
 
+
 .. contents:: 目录
 
 Spinning Up需要使用Python3，MuJoCo，OpenAI Gym和OpenMPI。
@@ -26,7 +27,7 @@ Spinning Up目前仅支持Linux和OSX。可能可以在Windows上安装，但尚
 
     source activate spinningup
 
-.. admonition:: 你所应该知道的
+.. admonition:: You Should Know
 
     如果你对Python环境和软件包管理不了解，这些东西很快就会让你感到困惑或不知所措，你可能会在这个过程中遇到一些障碍。（特别地，你应该会遇到类似这种问题，“我刚刚安装了这个东西，但是当我尝试使用它时系统提示没有找到它！”）你可能想要阅读一些关于包管理是什么的清晰解释，为什么它是一个好的想法，以及您通常必须执行哪些命令才能正确使用它。
 
@@ -44,7 +45,7 @@ Spinning Up目前仅支持Linux和OSX。可能可以在Windows上安装，但尚
 
 首先，前往 `mujoco-py`_ 的GitHub页面。按照README中的安装说明进行操作，该说明描述了如何安装MuJoCo物理引擎和mujoco-py包（允许在Python中使用MuJoCo）。
 
-.. admonition:: 你所应该知道的
+.. admonition:: You Should Know
 
     要使用MuJoCo模拟器，您需要获得 `MuJoCo license`_ 。任何人都可以获得免费30天的许可证，全日制学生可以获得免费1年的许可证。
 

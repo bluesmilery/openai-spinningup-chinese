@@ -28,7 +28,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="Installation" href="installation.html" />
+    <link rel="next" title="安装" href="installation.html" />
     <link rel="prev" title="Welcome to openai-spinningup-chinese’s documentation!" href="../index.html" /> 
 
   
@@ -82,13 +82,16 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">简介</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#id3">这是什么</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id21">我们为什么要做这个</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id22">这如何为我们的使命服务</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id24">代码设计理念</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id25">支持计划</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id11">我们为什么要做这个</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id12">这如何为我们的使命服务</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id14">代码设计理念</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id15">支持计划</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">安装</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">算法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="running.html">运行实验</a></li>
+<li class="toctree-l1"><a class="reference internal" href="saving_and_loading.html">实验输出</a></li>
 </ul>
 
             
@@ -154,36 +157,36 @@
            <div itemprop="articleBody">
             
   <div class="section" id="id1">
-<h1><a class="toc-backref" href="#id32">简介</a><a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<h1><a class="toc-backref" href="#id22">简介</a><a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
 <p>（截至2018年10月11日）</p>
 <div class="contents topic" id="id2">
 <p class="topic-title first">目录</p>
 <ul class="simple">
-<li><a class="reference internal" href="#id1" id="id32">简介</a><ul>
-<li><a class="reference internal" href="#id3" id="id33">这是什么</a></li>
-<li><a class="reference internal" href="#id21" id="id34">我们为什么要做这个</a></li>
-<li><a class="reference internal" href="#id22" id="id35">这如何为我们的使命服务</a></li>
-<li><a class="reference internal" href="#id24" id="id36">代码设计理念</a></li>
-<li><a class="reference internal" href="#id25" id="id37">支持计划</a></li>
+<li><a class="reference internal" href="#id1" id="id22">简介</a><ul>
+<li><a class="reference internal" href="#id3" id="id23">这是什么</a></li>
+<li><a class="reference internal" href="#id11" id="id24">我们为什么要做这个</a></li>
+<li><a class="reference internal" href="#id12" id="id25">这如何为我们的使命服务</a></li>
+<li><a class="reference internal" href="#id14" id="id26">代码设计理念</a></li>
+<li><a class="reference internal" href="#id15" id="id27">支持计划</a></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="id3">
-<h2><a class="toc-backref" href="#id33">这是什么</a><a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<h2><a class="toc-backref" href="#id23">这是什么</a><a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
 <p>欢迎来到Spinning Up in Deep RL！这是由OpenAI制作的教育资源，以便更容易地学习深度强化学习（Deep RL）。</p>
 <p>对于不熟悉RL的人： <a class="reference external" href="https://en.wikipedia.org/wiki/Reinforcement_learning">强化学习</a> （RL）是一种机器学习方法，用于教会Agent如何通过反复试验来解决问题。 Deep RL指的是强化学习与 <a class="reference external" href="http://ufldl.stanford.edu/tutorial/">深度学习</a> 的结合。</p>
 <p>该模块包含各种有用的资源，包括：</p>
 <ul class="simple">
-<li>对RL术语，各种算法和基本理论的简短 <a href="#id4"><span class="problematic" id="id5">`</span></a>介绍`_（还未完成）</li>
-<li>关于如何成长为RL研究员的 <a href="#id6"><span class="problematic" id="id7">`</span></a>论文`_（还未完成）</li>
-<li>按主题组织的重要论文 <a href="#id8"><span class="problematic" id="id9">`</span></a>精选清单`_（还未完成）</li>
-<li>关键算法的简短独立实现的详细记录 <a href="#id10"><span class="problematic" id="id11">`</span></a>代码库`_（还未完成）</li>
-<li>以及一些 <a href="#id12"><span class="problematic" id="id13">`</span></a>练习`_（还未完成） 作为热身</li>
+<li>对RL术语，各种算法和基本理论的简短 <a class="reference external" href="../spinningup/rl_intro.html">介绍</a> （还未完成）</li>
+<li>关于如何成长为RL研究员的 <a class="reference external" href="../spinningup/spinningup.html">论文</a> （还未完成）</li>
+<li>按主题组织的重要论文 <a class="reference external" href="../spinningup/keypapers.html">精选清单</a> （还未完成）</li>
+<li>关键算法的简短独立实现的详细记录 <a class="reference external" href="https://github.com/openai/spinningup">代码库</a> （还未完成）</li>
+<li>以及一些 <a class="reference external" href="../spinningup/exercises.html">练习</a> （还未完成） 作为热身</li>
 </ul>
 </div>
-<div class="section" id="id21">
-<h2><a class="toc-backref" href="#id34">我们为什么要做这个</a><a class="headerlink" href="#id21" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id11">
+<h2><a class="toc-backref" href="#id24">我们为什么要做这个</a><a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h2>
 <p>我们听到的一个最常见的问题是</p>
 <blockquote>
 <div><div class="line-block">
@@ -201,14 +204,14 @@
 <p>因此，这个项目旨在为那些对深度强化学习很感兴趣并且想学习如何使用它或者活出贡献，但是不知从何学起或者不知道如何用代码来实现算法的人做一个中间桥梁。我们争取将这个项目作为一个能对这些人有帮助的起点。</p>
 <p>也就是说，从业者并不是唯一能够（或应该）从这些资料中受益的人。安全地解决AI问题需要具有广泛专业知识和观点的人，许多相关专业根本不涉及工程或计算机科学。尽管如此，参与进来的每个人都需要充分了解该技术以做出明智的决策，以及需要几个Spinning Up解决方案。</p>
 </div>
-<div class="section" id="id22">
-<h2><a class="toc-backref" href="#id35">这如何为我们的使命服务</a><a class="headerlink" href="#id22" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id12">
+<h2><a class="toc-backref" href="#id25">这如何为我们的使命服务</a><a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h2>
 <p>OpenAI的 <a class="reference external" href="https://blog.openai.com/openai-charter/">使命</a> 是确保AGI能够安全地发展以及从AI中获得的收益能够广泛分布。像Spinning Up这样的教学工具帮助我们在这两个目标上取得进展。</p>
 <p>首先，只要我们帮助人们了解AI是什么以及它是如何工作的，我们就会更接第二个目标。这使人们能够批判性地思考我们预期会出现的许多问题，因为AI在我们的生活中变得更加复杂和重要。</p>
 <p>而且，关键的是， <a class="reference external" href="https://jobs.lever.co/openai">我们需要人们帮助</a> 我们努力确保AGI是安全的。由于该领域非常新颖，具备复合技能的人才目前供不应求。我们知道很多人都有兴趣帮助我们，但不知道如何来帮助——那么这就是你应该学习的东西！如果您能成为这方面的专家，您可以在AI安全方面发挥作用。</p>
 </div>
-<div class="section" id="id24">
-<h2><a class="toc-backref" href="#id36">代码设计理念</a><a class="headerlink" href="#id24" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id14">
+<h2><a class="toc-backref" href="#id26">代码设计理念</a><a class="headerlink" href="#id14" title="永久链接至标题">¶</a></h2>
 <p>Spinning Up 代码库中的算法实现被设计为</p>
 <blockquote>
 <div><ul class="simple">
@@ -221,8 +224,8 @@
 <p>我们尽可能最小化每个算法实现中使用的技巧数量，并且最小化与其他类似算法之间的差异。这里给出一些没有使用技巧的例子：我们忽略了原始Soft-Actor Critic代码中所用的 <a class="reference external" href="https://github.com/haarnoja/sac/blob/108a4229be6f040360fcca983113df9c4ac23a6a/sac/distributions/normal.py#L69">正则化项</a> ，以及所有算法中的 <a class="reference external" href="https://github.com/openai/baselines/blob/28aca637d0f13f4415cc5ebb778144154cff3110/baselines/run.py#L131">观察归一化</a> 。关于缩小算法之间差异的示例：我们所实现的的DDPG，TD3和SAC都遵循 <a class="reference external" href="https://github.com/sfujim/TD3/blob/25dfc0a6562c54ae5575fad5b8f08bc9d5c4e26c/main.py#L89">原始TD3代码</a> 中列出的惯例，所有梯度下降更新都在episodes结束时执行（而不是在整个episodes过程中一直更新）。</p>
 <p>所有算法都是“相当好”的，因为它们大致达到了预期的性能，但不一定与文献中关于每项任务的最佳结果相匹配。因此，如果要使用任何这些代码实现​​进行科学基准比较的话请务必小心。有关每个实现的效果详细信息，请参阅我们的 <a class="reference external" href="../spinningup/bench.html">衡量基准</a> 页面。</p>
 </div>
-<div class="section" id="id25">
-<h2><a class="toc-backref" href="#id37">支持计划</a><a class="headerlink" href="#id25" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id15">
+<h2><a class="toc-backref" href="#id27">支持计划</a><a class="headerlink" href="#id15" title="永久链接至标题">¶</a></h2>
 <p>我们计划支持Spinning Up，以确保它成为学习深度强化学习的有用资源。对Spinning Up的长期（多年）支持尚未确定，但在短期内，我们承诺：</p>
 <ul>
 <li><p class="first">发布后前三周的积极支持。</p>
@@ -248,7 +251,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="installation.html" class="btn btn-neutral float-right" title="Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="installation.html" class="btn btn-neutral float-right" title="安装" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../index.html" class="btn btn-neutral" title="Welcome to openai-spinningup-chinese’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

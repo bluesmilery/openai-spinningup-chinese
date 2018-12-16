@@ -7,7 +7,7 @@ Welcome to openai-spinningup-chinese's documentation!
 =====================================================
 
 .. toctree::
-      :maxdepth: 2
+   :maxdepth: 2
    :caption: User Documentation
 
    user/introduction
@@ -18,7 +18,7 @@ Welcome to openai-spinningup-chinese's documentation!
    user/plotting
 
 .. toctree::
-      :maxdepth: 2
+   :maxdepth: 2
    :caption: Introduction to RL
 
    spinningup/rl_intro
@@ -26,7 +26,7 @@ Welcome to openai-spinningup-chinese's documentation!
    spinningup/rl_intro3
 
 .. toctree::
-      :maxdepth: 2
+   :maxdepth: 2
    :caption: Resources
 
    spinningup/spinningup
@@ -35,7 +35,7 @@ Welcome to openai-spinningup-chinese's documentation!
    spinningup/bench
 
 .. toctree::
-      :maxdepth: 2
+   :maxdepth: 2
    :caption: Algorithms Docs
 
    algorithms/vpg
@@ -46,7 +46,7 @@ Welcome to openai-spinningup-chinese's documentation!
    algorithms/sac
 
 .. toctree::
-      :maxdepth: 2
+   :maxdepth: 2
    :caption: Utilities Docs
 
    utils/logger
@@ -55,7 +55,7 @@ Welcome to openai-spinningup-chinese's documentation!
    utils/run_utils
 
 .. toctree::
-      :maxdepth: 2
+   :maxdepth: 2
    :caption: Etc.
 
    etc/acknowledgements

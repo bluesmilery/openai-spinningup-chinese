@@ -28,6 +28,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="实验输出" href="saving_and_loading.html" />
     <link rel="prev" title="算法" href="algorithms.html" /> 
 
   
@@ -105,6 +106,7 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="saving_and_loading.html">实验输出</a></li>
 </ul>
 
             
@@ -211,8 +213,8 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">spinup</span><span class="o">.</span><span class="n">run</span> <span class="n">ppo</span> <span class="o">--</span><span class="n">env</span> <span class="n">Walker2d</span><span class="o">-</span><span class="n">v2</span> <span class="o">--</span><span class="n">exp_name</span> <span class="n">walker</span>
 </pre></div>
 </div>
-<div class="admonition- admonition">
-<p class="first admonition-title">详细的快速入门指南</p>
+<div class="admonition-detailed-quickstart-guide admonition">
+<p class="first admonition-title">Detailed Quickstart Guide</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">spinup</span><span class="o">.</span><span class="n">run</span> <span class="n">ppo</span> <span class="o">--</span><span class="n">exp_name</span> <span class="n">ppo_ant</span> <span class="o">--</span><span class="n">env</span> <span class="n">Ant</span><span class="o">-</span><span class="n">v2</span> <span class="o">--</span><span class="n">clip_ratio</span> <span class="mf">0.1</span> <span class="mf">0.2</span>
     <span class="o">--</span><span class="n">hid</span><span class="p">[</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="mi">32</span><span class="p">,</span><span class="mi">32</span><span class="p">]</span> <span class="p">[</span><span class="mi">64</span><span class="p">,</span><span class="mi">32</span><span class="p">]</span> <span class="o">--</span><span class="n">act</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">tanh</span> <span class="o">--</span><span class="n">seed</span> <span class="mi">0</span> <span class="mi">10</span> <span class="mi">20</span> <span class="o">--</span><span class="n">dt</span>
     <span class="o">--</span><span class="n">data_dir</span> <span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">data</span>
@@ -236,16 +238,16 @@
 </pre></div>
 </div>
 <p>来查看文档。</p>
-<div class="admonition- admonition">
-<p class="first admonition-title">你所应该知道的</p>
+<div class="admonition-you-should-know admonition">
+<p class="first admonition-title">You Should Know</p>
 <p>参数值在使用之前会通过 <code class="docutils literal notranslate"><span class="pre">eval()</span></code> 传入，因此您可以直接从命令行描述一些函数和对象。例如：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">spinup</span><span class="o">.</span><span class="n">run</span> <span class="n">ppo</span> <span class="o">--</span><span class="n">env</span> <span class="n">Walker2d</span><span class="o">-</span><span class="n">v2</span> <span class="o">--</span><span class="n">exp_name</span> <span class="n">walker</span> <span class="o">--</span><span class="n">act</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">elu</span>
 </pre></div>
 </div>
 <p class="last">将 <code class="docutils literal notranslate"><span class="pre">tf.nn.elu</span></code> 设置为激活函数。</p>
 </div>
-<div class="admonition- admonition">
-<p class="first admonition-title">你所应该知道的</p>
+<div class="admonition-you-should-know admonition">
+<p class="first admonition-title">You Should Know</p>
 <p>对于采用dict值的kwargs有一些很好的处理。不必须像下面这样提供</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">key</span> <span class="nb">dict</span><span class="p">(</span><span class="n">v1</span><span class="o">=</span><span class="n">value_1</span><span class="p">,</span> <span class="n">v2</span><span class="o">=</span><span class="n">value_2</span><span class="p">)</span>
 </pre></div>
@@ -358,8 +360,8 @@
 </div>
 <div class="section" id="id15">
 <h3><a class="toc-backref" href="#id31">附加内容</a><a class="headerlink" href="#id15" title="永久链接至标题">¶</a></h3>
-<div class="admonition- admonition">
-<p class="first admonition-title">你其实并不需要知道这个</p>
+<div class="admonition-you-don-t-actually-need-to-know-this-one admonition">
+<p class="first admonition-title">You Don’t Actually Need to Know This One</p>
 <p>每个算法都位于一个文件 <code class="docutils literal notranslate"><span class="pre">spinup/algos/ALGO_NAME/ALGO_NAME.py</span></code> 中，这些文件可以直接从命令行运行，并带有一组有限的参数（其中一些参数不同于 <code class="docutils literal notranslate"><span class="pre">spinup/run.py</span></code> ）。然而，单个算法文件中的命令行支持基本上是残留的，这 <strong>不是</strong> 推荐的方式。</p>
 <p class="last">这个文档页面不会描述那些命令行调用， <em>只会</em> 在``spinup/run.py`` 文件中描述。</p>
 </div>
@@ -450,6 +452,8 @@
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="saving_and_loading.html" class="btn btn-neutral float-right" title="实验输出" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="algorithms.html" class="btn btn-neutral" title="算法" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
