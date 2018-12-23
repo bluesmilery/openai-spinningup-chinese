@@ -1,0 +1,288 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>绘制结果 &mdash; openai-spinningup-chinese 0.0.1 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="prev" title="实验输出" href="saving_and_loading.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> openai-spinningup-chinese
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">User Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">安装</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">算法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="running.html">运行实验</a></li>
+<li class="toctree-l1"><a class="reference internal" href="saving_and_loading.html">实验输出</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">绘制结果</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">openai-spinningup-chinese</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>绘制结果</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/user/plotting.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>绘制结果<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<p>Spinning Up有一个简单的绘图工具可以用于解释结果。使用下述代码运行：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">spinup</span><span class="o">.</span><span class="n">run</span> <span class="n">plot</span> <span class="p">[</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">output_directory</span> <span class="o">...</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">legend</span> <span class="p">[</span><span class="n">LEGEND</span> <span class="o">...</span><span class="p">]]</span>
+    <span class="p">[</span><span class="o">--</span><span class="n">xaxis</span> <span class="n">XAXIS</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">value</span> <span class="p">[</span><span class="n">VALUE</span> <span class="o">...</span><span class="p">]]</span> <span class="p">[</span><span class="o">--</span><span class="n">count</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">smooth</span> <span class="n">S</span><span class="p">]</span>
+    <span class="p">[</span><span class="o">--</span><span class="n">select</span> <span class="p">[</span><span class="n">SEL</span> <span class="o">...</span><span class="p">]]</span> <span class="p">[</span><span class="o">--</span><span class="n">exclude</span> <span class="p">[</span><span class="n">EXC</span> <span class="o">...</span><span class="p">]]</span>
+</pre></div>
+</div>
+<p><strong>位置参数：</strong></p>
+<dl class="option">
+<dt id="cmdoption-arg-logdir">
+<code class="descname">logdir</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-arg-logdir" title="永久链接至目标">¶</a></dt>
+<dd><p><em>strings</em>。你可以使用多个日志目录下的数据来画图（或者只使用日志目录的前缀，绘图仪将在内部自动补全目录名）。Logdirs将被以递归的方式来搜索实验输出。</p>
+<div class="admonition-you-should-know admonition">
+<p class="first admonition-title">You Should Know</p>
+<p>内置的自动补全功能非常方便！假设您已经运行了多个实验，目的是比较不同算法之间的性能，从而产生以下日志目录结构：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">/</span>
+    <span class="n">bench_algo1</span><span class="o">/</span>
+        <span class="n">bench_algo1</span><span class="o">-</span><span class="n">seed0</span><span class="o">/</span>
+        <span class="n">bench_algo1</span><span class="o">-</span><span class="n">seed10</span><span class="o">/</span>
+    <span class="n">bench_algo2</span><span class="o">/</span>
+        <span class="n">bench_algo2</span><span class="o">-</span><span class="n">seed0</span><span class="o">/</span>
+        <span class="n">bench_algo2</span><span class="o">-</span><span class="n">seed10</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>您可以轻松生成比较algo1和algo2的图表：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">spinup</span><span class="o">/</span><span class="n">utils</span><span class="o">/</span><span class="n">plot</span><span class="o">.</span><span class="n">py</span> <span class="n">data</span><span class="o">/</span><span class="n">bench_algo</span>
+</pre></div>
+</div>
+<p class="last">依靠自动补全来找到 <code class="docutils literal notranslate"><span class="pre">data/bench_algo1</span></code> 和 <code class="docutils literal notranslate"><span class="pre">data/bench_algo2</span></code> 。</p>
+</div>
+</dd></dl>
+
+<p><strong>可选参数：</strong></p>
+<dl class="option">
+<dt id="cmdoption-l">
+<code class="descname">-l</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--legend</code><code class="descclassname">=[LEGEND ...]</code><a class="headerlink" href="#cmdoption-l" title="永久链接至目标">¶</a></dt>
+<dd><p><em>strings</em>。指定图例的可选方法。默认图例将自动使用 <code class="docutils literal notranslate"><span class="pre">config.json</span></code> 文件中的 <code class="docutils literal notranslate"><span class="pre">exp_name</span></code> ，除非你使用这个参数另外指定。仅当您为将要绘制的每个目录提供名称时，此方法才有效。 （注意：这可能与您提供的logdir参数的数量不同！回想一下绘图仪查找logdir参数时的自动填充：给定的logdir前缀可能有多个匹配，那么您需要为每一个匹配上的logdir提供一个图例字符串——除非您通过选择或排除规则（下方有介绍）删除其中一些作为候选项。）</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-x">
+<code class="descname">-x</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--xaxis</code><code class="descclassname">=XAXIS</code><code class="descclassname">, </code><code class="descname">default</code><code class="descclassname">='TotalEnvInteracts'</code><a class="headerlink" href="#cmdoption-x" title="永久链接至目标">¶</a></dt>
+<dd><p><em>string</em>。选择数据中的哪个列用作x轴。</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-y">
+<code class="descname">-y</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--value</code><code class="descclassname">=[VALUE ...]</code><code class="descclassname">, </code><code class="descname">default</code><code class="descclassname">='Performance'</code><a class="headerlink" href="#cmdoption-y" title="永久链接至目标">¶</a></dt>
+<dd><p><em>string</em>。选择数据中的哪些列画在y轴上。提交多个值将生成多个图。默认为 <code class="docutils literal notranslate"><span class="pre">Performance</span></code> ，但是它不是任何算法的实际输出。相反， <code class="docutils literal notranslate"><span class="pre">Performance</span></code> 指的是 <code class="docutils literal notranslate"><span class="pre">AverageEpRet</span></code> （对于on-policy算法的正确性能度量）或者是 <code class="docutils literal notranslate"><span class="pre">AverageTestEpRet</span></code> （对于off-policy算法的正确性能度量）。绘图仪将自动找出为每个logdir画图所需的 <code class="docutils literal notranslate"><span class="pre">AverageEpRet</span></code> 或 <code class="docutils literal notranslate"><span class="pre">AverageTestEpRet</span></code> 。</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-count">
+<code class="descname">--count</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-count" title="永久链接至目标">¶</a></dt>
+<dd><p>可选标志。默认情况下，绘图仪显示的y值是使用同一个 <code class="docutils literal notranslate"><span class="pre">exp_name</span></code> 的所有结果的平均值，这通常是一组仅有随机种子变化的相同实验。但是如果你想分别看到所有这些曲线，请使用 <code class="docutils literal notranslate"><span class="pre">--count</span></code> 标志。</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-s">
+<code class="descname">-s</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--smooth</code><code class="descclassname">=S</code><code class="descclassname">, </code><code class="descname">default</code><code class="descclassname">=1</code><a class="headerlink" href="#cmdoption-s" title="永久链接至目标">¶</a></dt>
+<dd><p><em>int</em>。通过在固定窗口内平均来平滑数据。此参数表示窗口的宽度。</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-select">
+<code class="descname">--select</code><code class="descclassname">=[SEL ...]</code><a class="headerlink" href="#cmdoption-select" title="永久链接至目标">¶</a></dt>
+<dd><p><em>strings</em>。可选的选择规则：绘图仪将仅显示来自包含这些子串的logdir的曲线。</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-exclude">
+<code class="descname">--exclude</code><code class="descclassname">=[EXC ...]</code><a class="headerlink" href="#cmdoption-exclude" title="永久链接至目标">¶</a></dt>
+<dd><p><em>strings</em>。可选的排除规则：绘图仪将仅显示来自不包含这些子串的logdir的曲线。</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="saving_and_loading.html" class="btn btn-neutral" title="实验输出" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Gai
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
